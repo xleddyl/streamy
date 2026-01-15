@@ -63,6 +63,13 @@ export default defineNuxtConfig({
                href: 'https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap',
             },
          ],
+         script: [
+            {
+               src: 'https://analytics.xleddyl.dev/script.js',
+               'data-website-id': '2416d284-6f19-4bb9-9977-ec15048f1d28',
+               defer: true,
+            },
+         ],
          noscript: [{ children: 'Javascript is required' }],
       },
    },
