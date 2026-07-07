@@ -3,14 +3,13 @@
       <Body>
          <div id="app-layout">
             <NuxtLoadingIndicator :height="5" color="#FF0808" />
-            <UNotifications />
-            <UModals />
+            <Notifications />
             <Analytics />
 
             <div class="flex min-h-screen flex-col">
                <Header />
                <slot />
-               <div class="mt-auto">
+               <div v-if="!route.params.id" class="mt-auto">
                   <Footer />
                </div>
             </div>
@@ -22,19 +21,16 @@
 <script lang="ts" setup>
 import { Analytics } from '@vercel/analytics/nuxt'
 
-const { t } = useI18n()
+const route = useRoute()
 
-useLocaleHead({
-   addDirAttribute: true,
-   identifierAttribute: 'id',
-   addSeoAttributes: true,
+// tab title: "<video> · Streamy" in a room with a video playing, "Streamy" everywhere else
+useHead({
+   titleTemplate: (title) => (title ? `${title} · Streamy` : 'Streamy'),
 })
 
-useSeoMeta(
-   reactive({
-      description: t('screen.layout.default.meta.description'),
-      ogTitle: t('screen.layout.default.meta.title'),
-      ogDescription: t('screen.layout.default.meta.description'),
-   })
-)
+useSeoMeta({
+   description: 'Watch YouTube together, synced peer-to-peer. No accounts, no servers.',
+   ogTitle: 'Streamy',
+   ogDescription: 'Watch YouTube together, synced peer-to-peer. No accounts, no servers.',
+})
 </script>

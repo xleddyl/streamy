@@ -1,14 +1,16 @@
 <template>
-   <main class="flex min-h-screen flex-col items-center justify-center gap-10">
+   <main
+      class="bg-smoky-black flex min-h-screen flex-col items-center justify-center gap-10 text-white"
+   >
       <div class="text-center">
-         <div class="flex flex-col items-center gap-1 font-title text-3xl font-bold">
+         <div class="font-title flex flex-col items-center gap-1 text-3xl font-bold">
             <p class="w-fit rotate-90">{{ ':(' }}</p>
             <h1>{{ message.error }}</h1>
          </div>
-         <p class="text-base" v-if="message.details">{{ message.details }}</p>
+         <p class="text-base text-white/50" v-if="message.details">{{ message.details }}</p>
       </div>
-      <NuxtLink title="home" :to="localePath('/')">
-         <p class="__clickable underline">{{ $t('common.home') }}</p>
+      <NuxtLink title="home" to="/">
+         <p class="__clickable underline">Homepage</p>
       </NuxtLink>
    </main>
 </template>
@@ -20,29 +22,25 @@ const props = defineProps({
    error: Object as () => NuxtError,
 })
 
-const { t } = useI18n()
-const localePath = useLocalePath()
-const runtimeConfig = useRuntimeConfig()
-
 const message = computed(() => {
    switch (props.error?.statusCode) {
       case 404: {
          return {
-            error: t('common_error.404'),
-            details: t('common_error.404_description'),
+            error: 'Verify the room code',
+            details: 'Check that you have entered the correct room code in the URL',
          }
       }
       case 500: {
-         if (runtimeConfig.public.mode === 'development') {
+         if (import.meta.dev) {
             console.log(props.error)
          }
-         return { error: t('common_error.500') }
+         return { error: 'Internal server error' }
       }
       case 410: {
-         return { error: t('common_error.410') }
+         return { error: 'The link has expired or is invalid' }
       }
       default: {
-         return { error: t('common_error.generic') }
+         return { error: 'Something went wrong' }
       }
    }
 })

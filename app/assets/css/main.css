@@ -1,31 +1,40 @@
-html {
-   @apply scroll-smooth font-sans;
+@import 'tailwindcss';
+
+@theme {
+   /* ── Color ── */
+   --color-smoky-black: #0f0f0f;
+   --color-charleston-green: #282828;
+
+   --color-candy-apple-red: #ff0808;
+   --color-candy-apple-red-50: #fff0f0;
+   --color-candy-apple-red-100: #ffdddd;
+   --color-candy-apple-red-200: #ffc0c0;
+   --color-candy-apple-red-300: #ff9494;
+   --color-candy-apple-red-400: #ff5757;
+   --color-candy-apple-red-500: #ff2323;
+   --color-candy-apple-red-600: #ff0808;
+   --color-candy-apple-red-700: #d70000;
+   --color-candy-apple-red-800: #b10303;
+   --color-candy-apple-red-900: #920a0a;
+   --color-candy-apple-red-950: #500000;
+
+   /* ── Typography ── */
+   --font-title: 'Lexend', sans-serif;
+   --font-sans: 'Montserrat', sans-serif;
 }
 
-.__title-hightlight {
-   @apply text-2xl font-bold text-candy-apple-red;
-}
+@layer base {
+   html {
+      @apply scroll-smooth font-sans;
+   }
 
-.__title-background {
-   @apply bg-candy-apple-red text-2xl font-bold text-white;
-}
-
-.__backdrop {
-   @apply !pointer-events-auto bg-black/40 backdrop-blur-sm;
-}
-
-.__clickable {
-   @apply cursor-pointer select-none transition-opacity duration-200;
-
-   &:active {
-      @apply transition-none;
-
-      opacity: 0.6 !important;
+   img {
+      @apply object-cover;
    }
 }
 
-.__link {
-   @apply cursor-pointer underline transition-opacity duration-200;
+.__clickable {
+   @apply cursor-pointer transition-opacity duration-200 select-none;
 
    &:active {
       @apply transition-none;
@@ -38,13 +47,14 @@ html {
    backdrop-filter: blur(20px);
 }
 
-.__shadow {
-   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.2);
-}
-
 .__center {
    width: min(1452px, 100% - 4rem);
    margin-inline: auto;
+}
+
+/* room layout: fill the screen, keep only a slim gutter */
+.__center.__wide {
+   width: calc(100% - 2rem);
 }
 
 @media only screen and (max-width: 980px) {

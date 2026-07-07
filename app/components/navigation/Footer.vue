@@ -1,5 +1,5 @@
 <template>
-   <footer class="flex justify-center pb-5 pt-20 text-white/20">
+   <footer class="flex justify-center pt-20 pb-5 text-white/20">
       <p>
          © {{ new Date().getFullYear() }} - made by
          <a class="__clickable" href="https://xleddyl.dev" target="_blank" title="credits">

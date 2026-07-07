@@ -1,5 +1,12 @@
 import { defineNuxtPlugin } from '#app'
 
+declare global {
+   interface Window {
+      YT: typeof YT
+      onYouTubeIframeAPIReady: () => void
+   }
+}
+
 export default defineNuxtPlugin(() => {
    const loadYouTubeIframeAPI = () => {
       return new Promise<typeof YT>((resolve) => {
