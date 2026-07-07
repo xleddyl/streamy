@@ -44,6 +44,15 @@
             <p class="text-sm leading-relaxed text-white/40">{{ step.description }}</p>
          </div>
       </section>
+
+      <a
+         href="https://xleddyl.dev"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="__clickable mx-auto w-fit text-[10px] tracking-[0.05em] text-white/40 no-underline"
+      >
+         made by xleddyl (•_•)
+      </a>
    </main>
 </template>
 

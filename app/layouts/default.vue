@@ -9,9 +9,6 @@
             <div class="flex min-h-screen flex-col">
                <Header />
                <slot />
-               <div v-if="!route.params.id" class="mt-auto">
-                  <Footer />
-               </div>
             </div>
          </div>
       </Body>
@@ -20,8 +17,6 @@
 
 <script lang="ts" setup>
 import { Analytics } from '@vercel/analytics/nuxt'
-
-const route = useRoute()
 
 // tab title: "<video> · Streamy" in a room with a video playing, "Streamy" everywhere else
 useHead({
